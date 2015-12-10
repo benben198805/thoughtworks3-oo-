@@ -3,20 +3,21 @@ package com.thoughtworks.pos.good;
 /**
  * Created by ben on 15-12-9.
  */
-public abstract class Promotions extends Good {
+public class Promotions extends Good {
     protected Good good;
 
-    public void setPromotion(Good good){
-        this.good=good;
-        calTotalPrice();
+    public Promotions(Good good) {
+        this.good = good;
     }
 
     @Override
     public void calTotalPrice() {
-        if (good != null)
-        {
-            super.calTotalPrice();
-        }
+        good.calTotalPrice();
+        doPromotions();
     }
+
+    public void doPromotions() {
+    }
+
 
 }

@@ -4,6 +4,7 @@ import com.thoughtworks.pos.format.Format;
 import com.thoughtworks.pos.format.FormatFactory;
 import com.thoughtworks.pos.good.DiscountPromotion;
 import com.thoughtworks.pos.good.Good;
+import com.thoughtworks.pos.good.Promotions;
 import com.thoughtworks.pos.good.SecondHalfPromotion;
 
 import java.util.HashMap;
@@ -33,34 +34,20 @@ public class Main {
 
             if(discountItems.containsKey(goodCode)){
                 double discountRate=discountItems.get(goodCode)*0.01;
-                DiscountPromotion discount=new DiscountPromotion(discountRate);
-                discount.setPromotion(good);
-//                discount.calTotalPrice();
+                Promotions discount=new DiscountPromotion(good,discountRate);
+                discount.calTotalPrice();
             }
 
             if(secondHalfPriceItems.containsKey(goodCode))
             {
 
-                SecondHalfPromotion secondHalf=new SecondHalfPromotion();
-                secondHalf.setPromotion(good);
-//                secondHalf.calTotalPrice();
+                Promotions secondHalf=new SecondHalfPromotion(good);
+                secondHalf.calTotalPrice();
             }
-
 
             total+=good.getTotalPrice();
         }
 
-        System.out.println(total);
-
-
-//        ItemParser itemParser = new ItemParser();
-//        List<Item> allItems = itemParser.parse(ShopData.ITEMS_DATA);
-//        ShoppingCartParser shoppingCartParser = new ShoppingCartParser();
-//        List<CartItem> cartItems = shoppingCartParser.parse(ShopData.SHOPPING_CART_DATA);
-//
-//        PosMachine posMachine = new PosMachine(allItems);
-//        double total = posMachine.calculate(cartItems);
-//
-//        System.out.println("总价:" + total);
+        System.out.println("总价:" + total);
     }
 }

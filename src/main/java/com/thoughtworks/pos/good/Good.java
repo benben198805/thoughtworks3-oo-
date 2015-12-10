@@ -3,20 +3,19 @@ package com.thoughtworks.pos.good;
 /**
  * Created by ben on 15-12-9.
  */
-public class Good {
+public class Good{
     private String goodCode;
     private int goodNumber;
     private double goodPrice;
     private double totalPrice;
 
-    public Good() {
-    }
-
     public Good(String goodCode, int goodNumber, double goodPrice) {
         this.goodCode = goodCode;
         this.goodNumber = goodNumber;
         this.goodPrice = goodPrice;
-        this.totalPrice=goodNumber*goodPrice;
+    }
+
+    public Good() {
     }
 
     public double getTotalPrice() {
@@ -40,6 +39,6 @@ public class Good {
     }
 
     public void calTotalPrice(){
-
+        this.totalPrice=goodNumber*goodPrice;
     }
 }

@@ -4,8 +4,13 @@ package com.thoughtworks.pos.good;
  * Created by ben on 15-12-9.
  */
 public class SecondHalfPromotion extends Promotions{
+
+    public SecondHalfPromotion(Good good) {
+        super(good);
+    }
+
     @Override
-    public void calTotalPrice() {
+    public void doPromotions() {
         int number=good.getGoodNumber();
         double totalPrice=good.getTotalPrice();
         if(number%2==0)

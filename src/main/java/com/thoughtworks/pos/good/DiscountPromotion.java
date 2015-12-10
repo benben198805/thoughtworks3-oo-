@@ -6,16 +6,14 @@ package com.thoughtworks.pos.good;
 public class DiscountPromotion extends Promotions {
     private double discount;
 
-    public DiscountPromotion(double discount) {
-        this.discount = discount;
+    public DiscountPromotion(Good good,double discount) {
+        super(good);
+        this.discount=discount;
     }
 
-    public DiscountPromotion() {
-        this.discount=1.0d;
-    }
 
     @Override
-    public void calTotalPrice() {
+    public void doPromotions() {
         double goodPrice=good.getGoodPrice();
         good.setGoodPrice(goodPrice*discount);
 
@@ -23,4 +21,5 @@ public class DiscountPromotion extends Promotions {
         total= total*discount;
         good.setTotalPrice(total);
     }
+
 }
