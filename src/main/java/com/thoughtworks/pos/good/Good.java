@@ -13,6 +13,7 @@ public class Good{
         this.goodCode = goodCode;
         this.goodNumber = goodNumber;
         this.goodPrice = goodPrice;
+        this.totalPrice=goodNumber*goodPrice;
     }
 
     public Good() {
@@ -39,6 +40,5 @@ public class Good{
     }
 
     public void calTotalPrice(){
-        this.totalPrice=goodNumber*goodPrice;
     }
 }

@@ -8,7 +8,7 @@ public class DiscountPromotion extends Promotions {
 
     public DiscountPromotion(Good good,double discount) {
         super(good);
-        this.discount=discount;
+        this.discount=discount>0&&discount<=1?discount:1.0d;
     }
 
 
