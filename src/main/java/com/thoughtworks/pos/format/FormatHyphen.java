@@ -9,27 +9,25 @@ import java.util.regex.Pattern;
  * Created by ben on 15-12-9.
  */
 public class FormatHyphen extends Format {
-    private String regex="^\\w:\\d$";
-    public FormatHyphen(List<String> formatTarget) {
-        super(formatTarget);
-    }
+    private String regex="^\\w+-\\d+$";
 
     @Override
     public HashMap<String, Double> getFormatResult() {
         List<String> items=super.getFormatTarget();
 
+        String[] itemArr;
         Pattern r=Pattern.compile(regex);
 
-        HashMap<String, Double> result=null;
+        HashMap<String, Double> result=new HashMap<>();
 
         for (String item:items) {
             Matcher m=r.matcher(item);
-            if(!m.find())
+            if(!m.matches())
             {
-                throw new IllegalArgumentException("bad format item"+item);
+                throw new IllegalArgumentException("bad format item");
             }
 
-            String[] itemArr=item.split(":");
+            itemArr=item.split("-");
             result.put(itemArr[0],Double.valueOf(itemArr[1]));
         }
 
