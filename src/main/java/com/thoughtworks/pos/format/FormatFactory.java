@@ -12,18 +12,19 @@ public class FormatFactory {
         {
             case ":":
                 format=new FormatColon();
+                format.setFormatTarget(items);
                 break;
             case "-":
                 format=new FormatHyphen();
+                format.setFormatTarget(items);
                 break;
             case " ":
                 format=new FormatNormal();
+                format.setFormatTarget(items);
                 break;
             default:
                 break;
-
         }
-        format.setFormatTarget(items);
         return format;
     }
 

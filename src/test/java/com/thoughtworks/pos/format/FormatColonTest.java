@@ -18,7 +18,7 @@ public class FormatColonTest {
 
     @Test
     public void should_return_hashMap_given_correctData_when_use_getFormatResult(){
-        format=new FormatFactory().statrFormat(":",ShopData.itemList);
+        format=new FormatFactory().statrFormat(":", ShopData.itemList);
 
         HashMap<String,Double> result=format.getFormatResult();
 

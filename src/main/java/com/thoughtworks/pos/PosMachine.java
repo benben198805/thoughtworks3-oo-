@@ -75,7 +75,7 @@ public final class PosMachine {
         if(secondHalfPriceItems.containsKey(goodCode))
         {
             Promotions secondHalf=new SecondHalfPromotion(good);
-            secondHalf.calTotalPrice();
+            secondHalf.doPromotions();
         }
     }
 
@@ -83,38 +83,9 @@ public final class PosMachine {
         if(discountItems.containsKey(goodCode)){
             double discountRate=discountItems.get(goodCode)*0.01;
             Promotions discount=new DiscountPromotion(good,discountRate);
-            discount.calTotalPrice();
+            discount.doPromotions();
         }
     }
 
 
-    //    private final List<Item> allItems;
-//
-//    public PosMachine(final List<Item> allItems) {
-//        this.allItems = allItems;
-//    }
-//
-//    public double calculate(final List<CartItem> cartItems) {
-//        double total = 0;
-//        for (CartItem cartItem : cartItems) {
-//            total += calculateSubtotal(cartItem);
-//        }
-//        return total;
-//    }
-//
-//    private double calculateSubtotal(final CartItem cartItem) {
-//        String barcode = cartItem.getBarcode();
-//        double originPrice = queryItemPrice(barcode);
-//        return cartItem.getQuantity() * originPrice;
-//    }
-//
-//    private double queryItemPrice(final String barcode) {
-//        for (Item item : allItems) {
-//            if (item.getBarcode().equals(barcode)) {
-//                return item.getPrice();
-//            }
-//        }
-//
-//        throw new IllegalArgumentException("unknown item");
-//    }
 }

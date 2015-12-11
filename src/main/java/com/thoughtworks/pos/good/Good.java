@@ -39,6 +39,5 @@ public class Good{
         this.goodPrice = goodPrice;
     }
 
-    public void calTotalPrice(){
-    }
+    public void calTotalPrice(){}
 }

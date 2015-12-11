@@ -11,7 +11,6 @@ public class DiscountPromotion extends Promotions {
         this.discount=discount>0&&discount<=1?discount:1.0d;
     }
 
-
     @Override
     public void doPromotions() {
         double goodPrice=good.getGoodPrice();
@@ -21,5 +20,4 @@ public class DiscountPromotion extends Promotions {
         total= total*discount;
         good.setTotalPrice(total);
     }
-
 }

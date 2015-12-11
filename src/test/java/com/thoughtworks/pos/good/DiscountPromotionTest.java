@@ -20,7 +20,7 @@ public class DiscountPromotionTest {
     @Test
     public void should_return_30$_pursure_one_thing_with_40$_when_use_75_discount(){
         Promotions promotions=new DiscountPromotion(good,0.75d);
-        promotions.calTotalPrice();
+        promotions.doPromotions();
         double total=good.getTotalPrice();
 
         assertThat(total,is(30d));
@@ -30,7 +30,7 @@ public class DiscountPromotionTest {
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_0_discount(){
         Promotions promotions=new DiscountPromotion(good,0.0d);
-        promotions.calTotalPrice();
+        promotions.doPromotions();
         double total=good.getTotalPrice();
 
         assertThat(total,is(40d));
@@ -40,7 +40,7 @@ public class DiscountPromotionTest {
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_negative_discount(){
         Promotions promotions=new DiscountPromotion(good,-0.75d);
-        promotions.calTotalPrice();
+        promotions.doPromotions();
         double total=good.getTotalPrice();
 
         assertThat(total,is(40d));
@@ -50,7 +50,7 @@ public class DiscountPromotionTest {
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_1_discount(){
         Promotions promotions=new DiscountPromotion(good,1.0d);
-        promotions.calTotalPrice();
+        promotions.doPromotions();
         double total=good.getTotalPrice();
 
         assertThat(total,is(40d));
@@ -60,7 +60,7 @@ public class DiscountPromotionTest {
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_more_than_1_discount(){
         Promotions promotions=new DiscountPromotion(good,1.5d);
-        promotions.calTotalPrice();
+        promotions.doPromotions();
         double total=good.getTotalPrice();
 
         assertThat(total,is(40d));
