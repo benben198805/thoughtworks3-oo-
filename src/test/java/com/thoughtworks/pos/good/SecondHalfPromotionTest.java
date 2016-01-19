@@ -13,7 +13,9 @@ public class SecondHalfPromotionTest {
 
     @Test
     public void should_return_100$_pursure_three_thing_with_40$(){
-        good=new Good("ITEM000003",3,40);
+        good=new Good("ITEM000003",3,40,1.0,true);
+        good.setTotalPrice(120d);
+
         Promotions promotions=new SecondHalfPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
@@ -23,7 +25,8 @@ public class SecondHalfPromotionTest {
 
     @Test
     public void should_return_60$_pursure_two_thing_with_40$(){
-        good=new Good("ITEM000003",2,40);
+        good=new Good("ITEM000003",2,40,1.0,true);
+        good.setTotalPrice(80d);
 
         Promotions promotions=new SecondHalfPromotion(good);
         promotions.doPromotions();

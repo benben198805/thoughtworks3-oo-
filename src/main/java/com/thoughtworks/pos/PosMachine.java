@@ -2,10 +2,7 @@ package com.thoughtworks.pos;
 
 import com.thoughtworks.pos.format.Format;
 import com.thoughtworks.pos.format.FormatFactory;
-import com.thoughtworks.pos.good.DiscountPromotion;
 import com.thoughtworks.pos.good.Good;
-import com.thoughtworks.pos.good.Promotions;
-import com.thoughtworks.pos.good.SecondHalfPromotion;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -60,32 +57,16 @@ public final class PosMachine {
             }
             double goodPrice=itemList.get(goodCode);
 
-            Good good=new Good(goodCode,carts.get(goodCode).intValue(),goodPrice);
+            double discount=discountItems.containsKey(goodCode)?discountItems.get(goodCode)/100:1.0d;
+            boolean isSecondHalf=secondHalfPriceItems.containsKey(goodCode);
 
-            doDiscountPromotion(goodCode, good);
+            Good good=new Good(goodCode,carts.get(goodCode).intValue(),goodPrice, discount,isSecondHalf);
 
-            doSecondHalfProtion(goodCode, good);
-
-            total+=good.getTotalPrice();
+            total+=good.calTotalPrice();
         }
         return total;
     }
 
-    private void doSecondHalfProtion(String goodCode, Good good) {
-        if(secondHalfPriceItems.containsKey(goodCode))
-        {
-            Promotions secondHalf=new SecondHalfPromotion(good);
-            secondHalf.doPromotions();
-        }
-    }
-
-    private void doDiscountPromotion(String goodCode, Good good) {
-        if(discountItems.containsKey(goodCode)){
-            double discountRate=discountItems.get(goodCode)*0.01;
-            Promotions discount=new DiscountPromotion(good,discountRate);
-            discount.doPromotions();
-        }
-    }
 
 
 }

@@ -1,6 +1,5 @@
 package com.thoughtworks.pos.good;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -10,16 +9,13 @@ import static org.junit.Assert.assertThat;
  * Created by ben on 15-12-10.
  */
 public class DiscountPromotionTest {
-    private Good good;
-    @Before
-    public void setUp()
-    {
-         good=new Good("ITEM000003",1,40);
-    }
 
     @Test
     public void should_return_30$_pursure_one_thing_with_40$_when_use_75_discount(){
-        Promotions promotions=new DiscountPromotion(good,0.75d);
+        Good good=new Good("ITEM000003",1,40,0.75d,false);
+        good.setTotalPrice(40d);
+
+        Promotions promotions=new DiscountPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
 
@@ -29,7 +25,10 @@ public class DiscountPromotionTest {
 
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_0_discount(){
-        Promotions promotions=new DiscountPromotion(good,0.0d);
+        Good good=new Good("ITEM000003",1,40,0.0d,false);
+        good.setTotalPrice(40d);
+
+        Promotions promotions=new DiscountPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
 
@@ -39,7 +38,10 @@ public class DiscountPromotionTest {
 
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_negative_discount(){
-        Promotions promotions=new DiscountPromotion(good,-0.75d);
+        Good good=new Good("ITEM000003",1,40,-0.75d,false);
+        good.setTotalPrice(40d);
+
+        Promotions promotions=new DiscountPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
 
@@ -49,7 +51,10 @@ public class DiscountPromotionTest {
 
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_1_discount(){
-        Promotions promotions=new DiscountPromotion(good,1.0d);
+        Good good=new Good("ITEM000003",1,40,1.0d,false);
+        good.setTotalPrice(40d);
+
+        Promotions promotions=new DiscountPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
 
@@ -59,7 +64,10 @@ public class DiscountPromotionTest {
 
     @Test
     public void should_return_40$_pursure_one_thing_with_40$_when_use_more_than_1_discount(){
-        Promotions promotions=new DiscountPromotion(good,1.5d);
+        Good good=new Good("ITEM000003",1,40,1.5d,false);
+        good.setTotalPrice(40d);
+
+        Promotions promotions=new DiscountPromotion(good);
         promotions.doPromotions();
         double total=good.getTotalPrice();
 

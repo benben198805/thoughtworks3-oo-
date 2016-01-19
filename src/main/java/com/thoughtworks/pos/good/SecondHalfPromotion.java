@@ -11,17 +11,19 @@ public class SecondHalfPromotion extends Promotions{
 
     @Override
     public void doPromotions() {
-        int number=good.getGoodNumber();
-        double totalPrice=good.getTotalPrice();
-        if(number%2==0)
+        if(good.isSecondHalf())
         {
-            totalPrice=totalPrice*0.75;
+            int number=good.getGoodNumber();
+            double totalPrice=good.getTotalPrice();
+            if(number%2==0)
+            {
+                totalPrice=totalPrice*0.75;
+            }
+            else
+            {
+                totalPrice=totalPrice*0.75+good.getGoodPrice()*0.25;
+            }
+            good.setTotalPrice(totalPrice);
         }
-        else
-        {
-            totalPrice=totalPrice*0.75+good.getGoodPrice()*0.25;
-        }
-        good.setTotalPrice(totalPrice);
-
     }
 }

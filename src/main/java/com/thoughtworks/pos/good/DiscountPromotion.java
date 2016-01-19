@@ -6,9 +6,10 @@ package com.thoughtworks.pos.good;
 public class DiscountPromotion extends Promotions {
     private double discount;
 
-    public DiscountPromotion(Good good,double discount) {
+    public DiscountPromotion(Good good) {
         super(good);
-        this.discount=discount>0&&discount<=1?discount:1.0d;
+        double discount=good.getDiscount();
+        this.discount=discount>0&&discount<=1d?discount:1.0d;
     }
 
     @Override

@@ -9,10 +9,6 @@ public abstract class Promotions{
     public Promotions(Good good) {
         this.good = good;
     }
-//
-//    public void calTotalPrice() {
-//        doPromotions();
-//    }
 
     public abstract void doPromotions();
 }

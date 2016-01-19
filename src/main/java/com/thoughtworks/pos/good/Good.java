@@ -8,12 +8,16 @@ public class Good{
     private int goodNumber;
     private double goodPrice;
     private double totalPrice;
+    private double discount;
+    private boolean isSecondHalf;
 
-    public Good(String goodCode, int goodNumber, double goodPrice) {
+
+    public Good(String goodCode, int goodNumber, double goodPrice, double discount, boolean isSecondHalf) {
         this.goodCode = goodCode;
         this.goodNumber = goodNumber;
         this.goodPrice = goodPrice;
-        this.totalPrice=goodNumber*goodPrice;
+        this.discount = discount;
+        this.isSecondHalf = isSecondHalf;
     }
 
     public Good() {
@@ -39,5 +43,23 @@ public class Good{
         this.goodPrice = goodPrice;
     }
 
-    public void calTotalPrice(){}
+    public double getDiscount() {
+        return discount;
+    }
+
+    public boolean isSecondHalf() {
+        return isSecondHalf;
+    }
+
+    public double calTotalPrice(){
+        totalPrice=goodNumber*goodPrice;
+        Promotions discountPromotion=new DiscountPromotion(this);
+        discountPromotion.doPromotions();
+
+        Promotions secondHalfPromotion=new SecondHalfPromotion(this);
+        secondHalfPromotion.doPromotions();
+
+        return totalPrice;
+
+    }
 }
